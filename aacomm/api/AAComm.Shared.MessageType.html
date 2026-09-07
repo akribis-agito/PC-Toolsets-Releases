@@ -125,7 +125,7 @@ Enum MessageType  <a class="header-action link-secondary" title="View source" hr
   <dl class="parameters">
     <dt id="AAComm_Shared_MessageType_BulkMessage"><code>BulkMessage = 7</code></dt>
   
-  <dd><pre><code>Special type to send multiple messages at once over Ethernet ONLY
+  <dd><pre><code>Special type to send multiple messages at once, on Ethernet and Simulation channels only
 </code></pre>
 <p></p>
 <pre><code>Usage example: &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; = &quot;APos;BPos;AVel[2];AGenData[4]=123...etc&quot;.
@@ -143,7 +143,7 @@ Timeout: &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if
 </dd>
     <dt id="AAComm_Shared_MessageType_BulkMessageCNC"><code>BulkMessageCNC = 12</code></dt>
   
-  <dd><pre><code>Special type to send multiple CNCA messages at once over Ethernet ONLY
+  <dd><pre><code>Special type to send multiple CNCA messages at once, on Ethernet and Simulation channels only
 </code></pre>
 <p></p>
 <pre><code>Refer to CNC documentation! Usage example: &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; = &quot;117571583,0,0;16908287,10000,10000,50000,2000&quot;
@@ -154,7 +154,7 @@ Timeout: &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if
 </dd>
     <dt id="AAComm_Shared_MessageType_BulkMessageCNCB"><code>BulkMessageCNCB = 13</code></dt>
   
-  <dd><pre><code>Special type to send multiple CNCB messages at once over Ethernet ONLY
+  <dd><pre><code>Special type to send multiple CNCB messages at once, on Ethernet and Simulation channels only
 </code></pre>
 <p></p>
 <pre><code>Refer to CNC documentation! Usage example: &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; = &quot;117571583,0,0;16908287,10000,10000,50000,2000&quot;
@@ -165,7 +165,7 @@ Timeout: &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if
 </dd>
     <dt id="AAComm_Shared_MessageType_BulkMessageIgnore"><code>BulkMessageIgnore = 8</code></dt>
   
-  <dd><pre><code>Special type to send multiple messages at once over Ethernet ONLY
+  <dd><pre><code>Special type to send multiple messages at once, on Ethernet and Simulation channels only
 </code></pre>
 <p></p>
 <pre><code>Usage example: &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; = &quot;APos;BPos;AVel[2];AGenData[4]=123...etc&quot;.
@@ -226,7 +226,7 @@ when this type is encountered, &lt;xref href=&quot;AAComm.CommAPI.OnLongOperatio
 </dd>
     <dt id="AAComm_Shared_MessageType_SpecialBulk"><code>SpecialBulk = 10</code></dt>
   
-  <dd><pre><code>Special type to send multiple CNCA messages at once over Ethernet ONLY
+  <dd><pre><code>Special type to send multiple CNCA messages at once, on Ethernet and Simulation channels only
 </code></pre>
 <p></p>
 <pre><code>Refer to CNC documentation! Usage example: &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; = &quot;100663295,100,200000,50000,0&quot;
@@ -237,7 +237,7 @@ when this type is encountered, &lt;xref href=&quot;AAComm.CommAPI.OnLongOperatio
 </dd>
     <dt id="AAComm_Shared_MessageType_SpecialBulkB"><code>SpecialBulkB = 11</code></dt>
   
-  <dd><pre><code>Special type to send multiple CNCB messages at once over Ethernet ONLY
+  <dd><pre><code>Special type to send multiple CNCB messages at once, on Ethernet and Simulation channels only
 </code></pre>
 <p></p>
 <pre><code>Refer to CNC documentation! Usage example: &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; = &quot;100663295,100,200000,50000,0&quot;

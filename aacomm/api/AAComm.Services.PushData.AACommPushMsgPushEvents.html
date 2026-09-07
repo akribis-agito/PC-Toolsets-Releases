@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class AACommPushMsgUP | Agito AAComm SDK </title>
+      <title>Class AACommPushMsgPushEvents | Agito AAComm SDK </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class AACommPushMsgUP | Agito AAComm SDK ">
+      <meta name="title" content="Class AACommPushMsgPushEvents | Agito AAComm SDK ">
       
-      <meta name="description" content="SOURCE == 1 (User Program): For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian) with multiple printf messages. Binary packet structure (after the header, before the messages slots):  uint8 n: number of printf messages uint16 missed: messages dropped since last flush uint16 freeBytesMsgQueue: remaining free bytes in FW printf buffer uint8 freeDescSlots: remaining free descriptor slots  Then n times:  uint32 timeSec: seconds since power-on uint32 timeTick: sub-second tick uint8 thread: thread ID uint16 len: text length in bytes byte[len] textBytes: raw ASCII text (NOT null-terminated)">
+      <meta name="description" content="SOURCE == 2 (push events): For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian) with fixed-size event records. Binary packet structure (after the header, before the records):  uint8 n: number of event records uint16 missed: events dropped since the last successful flush uint16 freeRows: remaining free rows in the controller&#39;s event queue uint16 reserved: zero  Then n times, exactly 50 bytes each:  uint8 type: event type uint8 axis: axis or port,  when controller-wide uint32 timeSec: seconds since power-on uint32 timeTick: sub-second tick double data1..data5: type-specific values  DATA is validated by arithmetic: it must be exactly 7 + 50n bytes. The packet terminator (&#39;&amp;gt;&#39; CR) may follow it, because the binary IPC path delivers the controller&#39;s bytes untrimmed.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_PushData_AACommPushMsgUP.md&amp;value=---%0Auid%3A%20AAComm.Services.PushData.AACommPushMsgUP%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_PushData_AACommPushMsgPushEvents.md&amp;value=---%0Auid%3A%20AAComm.Services.PushData.AACommPushMsgPushEvents%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AAComm.Services.PushData.AACommPushMsgUP">
+        <article data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents">
 
 
 
-  <h1 id="AAComm_Services_PushData_AACommPushMsgUP" data-uid="AAComm.Services.PushData.AACommPushMsgUP" class="text-break">
-Class AACommPushMsgUP  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgUP.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AAComm_Services_PushData_AACommPushMsgPushEvents" data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents" class="text-break">
+Class AACommPushMsgPushEvents  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgPushEvents.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,29 +97,32 @@ Class AACommPushMsgUP  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>SOURCE == 1 (User Program):</p>
+  <div class="markdown summary"><p>SOURCE == 2 (push events):</p>
 <p>For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian)
-with multiple printf messages.</p>
-<p>Binary packet structure (after the header, before the messages slots):</p>
+with fixed-size event records.</p>
+<p>Binary packet structure (after the header, before the records):</p>
 <ul>
-<li>uint8 n: number of printf messages</li>
-<li>uint16 missed: messages dropped since last flush</li>
-<li>uint16 freeBytesMsgQueue: remaining free bytes in FW printf buffer</li>
-<li>uint8 freeDescSlots: remaining free descriptor slots</li>
+<li>uint8 n: number of event records</li>
+<li>uint16 missed: events dropped since the last successful flush</li>
+<li>uint16 freeRows: remaining free rows in the controller's event queue</li>
+<li>uint16 reserved: zero</li>
 </ul>
-<p>Then n times:</p>
+<p>Then n times, exactly 50 bytes each:</p>
 <ul>
+<li>uint8 type: event type</li>
+<li>uint8 axis: axis or port, <a class="xref" href="AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_NoAxis">NoAxis</a> when controller-wide</li>
 <li>uint32 timeSec: seconds since power-on</li>
 <li>uint32 timeTick: sub-second tick</li>
-<li>uint8 thread: thread ID</li>
-<li>uint16 len: text length in bytes</li>
-<li>byte[len] textBytes: raw ASCII text (NOT null-terminated)</li>
+<li>double data1..data5: type-specific values</li>
 </ul>
+<p>DATA is validated by arithmetic: it must be exactly 7 + 50n bytes. The packet
+terminator ('&gt;' CR) may follow it, because the binary IPC path delivers the
+controller's bytes untrimmed.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class AACommPushMsgUP : AACommPushMsgBase</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AACommPushMsgPushEvents : AACommPushMsgBase</code></pre>
   </div>
 
 
@@ -130,7 +133,7 @@ with multiple printf messages.</p>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><a class="xref" href="AAComm.Services.PushData.AACommPushMsgBase.html">AACommPushMsgBase</a></div>
-      <div><span class="xref">AACommPushMsgUP</span></div>
+      <div><span class="xref">AACommPushMsgPushEvents</span></div>
     </dd>
   </dl>
 
@@ -186,19 +189,51 @@ with multiple printf messages.</p>
 </h2>
 
 
-  <a id="AAComm_Services_PushData_AACommPushMsgUP_FreeBytesMsgQueue_" data-uid="AAComm.Services.PushData.AACommPushMsgUP.FreeBytesMsgQueue*"></a>
+  <a id="AAComm_Services_PushData_AACommPushMsgPushEvents_Events_" data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents.Events*"></a>
 
-  <h3 id="AAComm_Services_PushData_AACommPushMsgUP_FreeBytesMsgQueue" data-uid="AAComm.Services.PushData.AACommPushMsgUP.FreeBytesMsgQueue">
-  FreeBytesMsgQueue
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgUP.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Services_PushData_AACommPushMsgPushEvents_Events" data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents.Events">
+  Events
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgPushEvents.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Remaining free bytes in firmware printf byte buffer.</p>
+  <div class="markdown level1 summary"><p>The event records in this packet, oldest first.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ushort FreeBytesMsgQueue { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;PushEventRecord&gt; Events { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AAComm.Services.PushData.PushEventRecord.html">PushEventRecord</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgPushEvents_FreeRows_" data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgPushEvents_FreeRows" data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows">
+  FreeRows
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgPushEvents.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remaining free rows in the controller's event queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort FreeRows { get; }</code></pre>
   </div>
 
 
@@ -218,78 +253,14 @@ with multiple printf messages.</p>
 
 
 
-  <a id="AAComm_Services_PushData_AACommPushMsgUP_FreeDescSlots_" data-uid="AAComm.Services.PushData.AACommPushMsgUP.FreeDescSlots*"></a>
+  <a id="AAComm_Services_PushData_AACommPushMsgPushEvents_Missed_" data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents.Missed*"></a>
 
-  <h3 id="AAComm_Services_PushData_AACommPushMsgUP_FreeDescSlots" data-uid="AAComm.Services.PushData.AACommPushMsgUP.FreeDescSlots">
-  FreeDescSlots
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgUP.cs/#L43"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Remaining free descriptor slots in firmware.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public byte FreeDescSlots { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_PushData_AACommPushMsgUP_Messages_" data-uid="AAComm.Services.PushData.AACommPushMsgUP.Messages*"></a>
-
-  <h3 id="AAComm_Services_PushData_AACommPushMsgUP_Messages" data-uid="AAComm.Services.PushData.AACommPushMsgUP.Messages">
-  Messages
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgUP.cs/#L48"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Collection of printf messages in this packet.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;PrintfMessage&gt; Messages { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AAComm.Services.PushData.PrintfMessage.html">PrintfMessage</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_PushData_AACommPushMsgUP_Missed_" data-uid="AAComm.Services.PushData.AACommPushMsgUP.Missed*"></a>
-
-  <h3 id="AAComm_Services_PushData_AACommPushMsgUP_Missed" data-uid="AAComm.Services.PushData.AACommPushMsgUP.Missed">
+  <h3 id="AAComm_Services_PushData_AACommPushMsgPushEvents_Missed" data-uid="AAComm.Services.PushData.AACommPushMsgPushEvents.Missed">
   Missed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgUP.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgPushEvents.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Number of messages dropped by firmware since last successful flush.</p>
+  <div class="markdown level1 summary"><p>Number of events dropped by the controller since the last successful flush.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -318,7 +289,7 @@ with multiple printf messages.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgUP.cs/#L26" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgPushEvents.cs/#L30" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -355,13 +355,14 @@ Class CommAPIWrapper  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_CommAPIWrapper_MessagesInBulk" data-uid="AAComm.CommAPIWrapper.MessagesInBulk">
   MessagesInBulk
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPIWrapper.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPIWrapper.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>returns max number of messages in a 'Bulk&quot; packet (50)
+  <div class="markdown level1 summary"><pre><code>returns max number of messages in a 'Bulk' packet (50) on a channel that carries a bulk
+(&lt;xref href=&quot;AAComm.Shared.ChannelType.Ethernet&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, &lt;xref href=&quot;AAComm.Shared.ChannelType.Simulation&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;)
 </code></pre>
 <p></p>
-<pre><code>(If ConnectionType is NOT &lt;xref href=&quot;AAComm.Shared.ChannelType.Ethernet&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; - returns '1')
+<pre><code>(Returns '1' on every other channel, and while disconnected)
 </code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -427,7 +428,7 @@ Class CommAPIWrapper  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_CommAPIWrapper_GetCanDescriptionFromParameter_System_String_" data-uid="AAComm.CommAPIWrapper.GetCanDescriptionFromParameter(System.String)">
   GetCanDescriptionFromParameter(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPIWrapper.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPIWrapper.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Get Complex CAN Code (CCC) description using &lt;xref href=&quot;AAComm.CommAPIWrapper.Instance&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; &lt;xref href=&quot;AAComm.Services.CanDescriptionBuilder.GetCanDescription(System.String%2cSystem.Int32%2cSystem.Boolean%2cSystem.Int32)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
@@ -472,7 +473,7 @@ Throws on errors
 
   <h3 id="AAComm_CommAPIWrapper_GetFormattedErrorText_AAComm_Services_AACommEventArgs_" data-uid="AAComm.CommAPIWrapper.GetFormattedErrorText(AAComm.Services.AACommEventArgs)">
   GetFormattedErrorText(AACommEventArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPIWrapper.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPIWrapper.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>function to resolve controller error codes using <a class="xref" href="AAComm.CommAPIWrapper.html#AAComm_CommAPIWrapper_Instance">Instance</a> <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></p>
